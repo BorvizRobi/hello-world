@@ -16,7 +16,7 @@ main (int argc, char **argv)
 
   char kulcs[MAX_KULCS];
   char buffer[BUFFER_MERET];
-						*/
+						
   int kulcs_index = 0;
   int olvasott_bajtok = 0;
 
@@ -24,7 +24,7 @@ main (int argc, char **argv)
   int kulcs_meret = strlen (argv[1]);
   strncpy (kulcs, argv[1], MAX_KULCS);
 
-													    */
+													    
   while ((olvasott_bajtok = read (0, (void *) buffer, BUFFER_MERET)))
     {
 
