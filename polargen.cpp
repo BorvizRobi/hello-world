@@ -1,3 +1,5 @@
+
+
 #include <iostream> 
 #include <cstdlib>
 #include <cmath>
@@ -34,7 +36,7 @@ double PolarGen::kovetkezo ()
 	    u1= std::rand() / (RAND_MAX +1.0);
 	    u2= std::rand() / (RAND_MAX +1.0);
 	    v1=2*u1-1;
-	    v2=2*u1-1;
+	    v2=2*u2-1;
 	    w=v1*v1+v2*v2;
            }
 	while (w>1);
