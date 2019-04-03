@@ -91,9 +91,8 @@ public:
     }
     ~LZWBinFa ()
     {
-        szabadit (gyoker->egyesGyermek ());
-        szabadit (gyoker->nullasGyermek ());
-	delete gyoker;
+        szabadit (gyoker);
+
     }
 
     /* Tagfüggvényként túlterheljük a << operátort, ezzel a célunk, hogy felkeltsük a
@@ -102,15 +101,12 @@ public:
      Mivel tagfüggvény, így van rá "értelmezve" az aktuális (this "rejtett paraméterként"
      kapott ) példány, azaz annak a fának amibe éppen be akarjuk nyomni a b betűt a tagjai
      (pl.: "fa", "gyoker") használhatóak a függvényben.
-
      A függvénybe programoztuk az LZW fa építésének algoritmusát tk.:
      http://progpater.blog.hu/2011/02/19/gyonyor_a_tomor
-
      a b formális param az a betű, amit éppen be kell nyomni a fába.
      
      a binFa << b (ahol a b majd a végén látszik, hogy már az '1' vagy a '0') azt jelenti
      tagfüggvényként, hogy binFa.operator<<(b) (globálisként így festene: operator<<(binFa, b) )
-
      */
     void operator<< (char b)
     {
@@ -153,7 +149,6 @@ public:
     }
     /* A bejárással kapcsolatos függvényeink (túlterhelt kiir-ók, atlag, ratlag stb.) rekurzívak,
      tk. a rekurzív fabejárást valósítják meg (lásd a 3. előadás "Fabejárás" c. fóliáját és társait)
-
      (Ha a rekurzív függvénnyel általában gondod van => K&R könyv megfelelő része: a 3. ea. izometrikus
      részében ezt "letáncoltuk" :) és külön idéztük a K&R álláspontját :)
    */
@@ -198,7 +193,6 @@ public:
       amely ismeri a mi LZW binfánkat...
       
       - globális függvényként: operator<<(kiFile, binFa) és pont ez látszik a következő sorban:
-
      */
     friend std::ostream & operator<< (std::ostream & os, LZWBinFa & bf)
     {
@@ -438,23 +432,17 @@ main ()
 {
     char b;
     LZWBinFa binFa;
-
     while (std::cin >> b)
     {
         binFa << b;
     }
-
     //std::cout << binFa.kiir (); // így rajzolt ki a fát a korábbi verziókban de, hogy izgalmasabb legyen
     // a példa, azaz ki lehessen tolni az LZWBinFa-t kimeneti csatornára:
-
     std::cout << binFa; // ehhez kell a globális operator<< túlterhelése, lásd fentebb
-
     std::cout << "depth = " << binFa.getMelyseg () << std::endl;
     std::cout << "mean = " << binFa.getAtlag () << std::endl;
     std::cout << "var = " << binFa.getSzoras () << std::endl;
-
     binFa.szabadit ();
-
     return 0;
 }
 */
