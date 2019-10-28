@@ -1,3 +1,5 @@
+/*
+Fordítás:
 $ lex -o l337d1c7.c l337d1c7.l 
 
 Futtatas:
