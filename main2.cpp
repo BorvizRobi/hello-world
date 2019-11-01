@@ -21,7 +21,16 @@ int main (int argc, char **argv)
 
     for(int i = 0; i < png_image.get_width(); ++i)
         for(int j = 0; j<png_image.get_height(); ++j)
-            png_image[i][j].red = newPNG[j*png_image.get_width()+j];
+		newPNG[i*png_image.get_width() + j] = png_image[i][j].red;
+
+    for(int i = 0; i < png_image.get_width(); ++i)
+        for(int j = 0; j<png_image.get_height(); ++j)
+        {    
+ 	     png_image[i][j].blue = 0;
+	     png_image[i][j].green = 0;
+	     png_image[i][j].red = newPNG[i*png_image.get_width() + j];
+	}
+
     png_image.write("output.png");   
   
 
